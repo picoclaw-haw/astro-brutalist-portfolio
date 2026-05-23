@@ -5,5 +5,5 @@ export default defineConfig({
   vite: {
     plugins: [tailwindcss()],
   },
-  site: 'https://picoclaw.github.io/astro-brutalist-portfolio',
+  site: 'https://picoclaw-haw.github.io/astro-brutalist-portfolio',
 });

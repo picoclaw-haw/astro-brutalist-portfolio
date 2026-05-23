@@ -1,0 +1,60 @@
+---
+const { name = 'YOUR NAME', role = 'DESIGNER & DEVELOPER', tagline = 'BUILDING BOLD DIGITAL EXPERIENCES' } = Astro.props;
+---
+
+<section class="relative min-h-screen flex items-center bg-ink overflow-hidden">
+  <!-- Grid background -->
+  <div class="absolute inset-0 grid-bg opacity-20"></div>
+
+  <!-- Noise overlay -->
+  <div class="noise-overlay absolute inset-0"></div>
+
+  <!-- Acid accent lines -->
+  <div class="absolute top-0 left-0 w-32 h-1 bg-acid"></div>
+  <div class="absolute bottom-0 right-0 w-32 h-1 bg-acid"></div>
+  <div class="absolute top-0 right-0 w-1 h-32 bg-acid"></div>
+  <div class="absolute bottom-0 left-0 w-1 h-32 bg-acid"></div>
+
+  <!-- Big number accent -->
+  <div class="absolute right-8 top-1/2 -translate-y-1/2 text-[20vw] font-display text-paper/5 select-none pointer-events-none">
+    {new Date().getFullYear()}
+  </div>
+
+  <div class="relative z-10 max-w-7xl mx-auto px-6 py-32 w-full">
+    <div class="space-y-4">
+      <!-- Name -->
+      <h1 class="font-display text-[clamp(4rem,12vw,12rem)] leading-[0.85] text-paper tracking-tight reveal-up">
+        {name.split(' ')[0]}
+      </h1>
+      <h1 class="font-display text-[clamp(4rem,12vw,10rem)] leading-[0.85] text-stroke-acid reveal-up stagger-1">
+        {name.split(' ').slice(1).join(' ')}
+      </h1>
+
+      <!-- Role marquee -->
+      <div class="pt-8 pb-4 overflow-hidden reveal-up stagger-2">
+        <div class="marquee-track flex gap-12 whitespace-nowrap">
+          <span class="font-mono text-sm tracking-[0.3em] uppercase text-acid">{role}</span>
+          <span class="font-mono text-sm tracking-[0.3em] uppercase text-paper/40">✦</span>
+          <span class="font-mono text-sm tracking-[0.3em] uppercase text-acid">{tagline}</span>
+          <span class="font-mono text-sm tracking-[0.3em] uppercase text-paper/40">✦</span>
+          <!-- Duplicate for seamless loop -->
+          <span class="font-mono text-sm tracking-[0.3em] uppercase text-acid">{role}</span>
+          <span class="font-mono text-sm tracking-[0.3em] uppercase text-paper/40">✦</span>
+          <span class="font-mono text-sm tracking-[0.3em] uppercase text-acid">{tagline}</span>
+          <span class="font-mono text-sm tracking-[0.3em] uppercase text-paper/40">✦</span>
+        </div>
+      </div>
+
+      <!-- CTA -->
+      <div class="pt-8 reveal-up stagger-3">
+        <a
+          href="#work"
+          class="inline-flex items-center gap-3 group font-mono text-sm tracking-[0.3em] uppercase text-paper border-2 border-paper px-8 py-4 hover:bg-acid hover:text-ink hover:border-acid transition-all duration-300"
+        >
+          <span>View Work</span>
+          <span class="group-hover:translate-x-1 transition-transform">↓</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>

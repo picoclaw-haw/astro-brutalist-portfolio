@@ -1,0 +1,33 @@
+---
+const { name = 'YOUR NAME', role = 'DESIGNER & DEVELOPER' } = Astro.props;
+---
+
+<header class="fixed top-0 left-0 right-0 z-50 mix-blend-difference">
+  <nav class="max-w-7xl mx-auto px-6 py-6 flex items-center justify-between">
+    <a href="/" class="font-display text-2xl tracking-widest text-paper hover:text-acid transition-colors">
+      {name.split(' ').map(w => w[0]).join('')}
+    </a>
+    <div class="hidden md:flex items-center gap-8 font-mono text-xs tracking-widest uppercase text-paper/80">
+      <a href="#work" class="hover:text-acid transition-colors">Work</a>
+      <a href="#about" class="hover:text-acid transition-colors">About</a>
+      <a href="#skills" class="hover:text-acid transition-colors">Skills</a>
+      <a href="#contact" class="hover:text-acid transition-colors">Contact</a>
+    </div>
+    <button
+      class="md:hidden font-mono text-xs tracking-widest uppercase text-paper"
+      id="mobile-toggle"
+      aria-label="Toggle menu"
+    >
+      Menu
+    </button>
+  </nav>
+</header>
+
+<script>
+  const toggle = document.getElementById('mobile-toggle');
+  if (toggle) {
+    toggle.addEventListener('click', () => {
+      alert('Mobile menu — build me!');
+    });
+  }
+</script>

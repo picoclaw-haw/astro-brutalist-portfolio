@@ -1,0 +1,35 @@
+---
+const { name = 'YOUR NAME' } = Astro.props;
+---
+
+<footer class="bg-ink text-paper/30 py-16 px-6 border-t border-paper/5">
+  <div class="max-w-7xl mx-auto">
+    <div class="flex flex-col md:flex-row items-center justify-between gap-8">
+      <!-- Logo -->
+      <a href="/" class="font-display text-2xl tracking-widest text-paper/50 hover:text-acid transition-colors">
+        {name.split(' ').map(w => w[0]).join('')}
+      </a>
+
+      <!-- Nav -->
+      <div class="flex items-center gap-8 font-mono text-xs tracking-widest uppercase">
+        <a href="#work" class="hover:text-acid transition-colors">Work</a>
+        <a href="#about" class="hover:text-acid transition-colors">About</a>
+        <a href="#skills" class="hover:text-acid transition-colors">Skills</a>
+        <a href="#contact" class="hover:text-acid transition-colors">Contact</a>
+      </div>
+
+      <!-- Copyright -->
+      <div class="font-mono text-[10px] tracking-widest uppercase">
+        © {new Date().getFullYear()} {name}
+      </div>
+    </div>
+
+    <!-- Bottom: theme credit -->
+    <div class="mt-12 pt-8 border-t border-paper/5 text-center">
+      <p class="font-mono text-[10px] tracking-widest uppercase text-paper/20">
+        Built with <a href="https://astro.build" class="hover:text-acid transition-colors">Astro</a>
+        — Brutalist Editorial Theme by <a href="https://github.com/picoclaw" class="hover:text-acid transition-colors">picoclaw</a>
+      </p>
+    </div>
+  </div>
+</footer>

@@ -1,0 +1,92 @@
+---
+interface Skill {
+  name: string;
+  level: number; // 0-100
+}
+
+const skillGroups = [
+  {
+    category: 'DESIGN',
+    skills: [
+      { name: 'UI/UX Design', level: 95 },
+      { name: 'Design Systems', level: 90 },
+      { name: 'Typography', level: 88 },
+      { name: 'Motion Design', level: 82 },
+    ],
+  },
+  {
+    category: 'DEVELOPMENT',
+    skills: [
+      { name: 'TypeScript', level: 95 },
+      { name: 'React / Next.js', level: 92 },
+      { name: 'Node.js', level: 88 },
+      { name: 'CSS / Tailwind', level: 96 },
+    ],
+  },
+  {
+    category: 'TOOLS & PLATFORMS',
+    skills: [
+      { name: 'Figma', level: 94 },
+      { name: 'Storybook', level: 85 },
+      { name: 'Git / CI-CD', level: 90 },
+      { name: 'AWS / Vercel', level: 82 },
+    ],
+  },
+];
+---
+
+<section id="skills" class="py-32 px-6 bg-paper relative">
+  <!-- Decorative stripe -->
+  <div class="absolute top-0 left-0 right-0 h-3 bg-acid"></div>
+
+  <div class="max-w-7xl mx-auto">
+    <div class="mb-24 flex items-center gap-6">
+      <span class="font-mono text-xs tracking-[0.3em] uppercase text-rust">03.</span>
+      <h2 class="font-display text-[clamp(3rem,8vw,7rem)] leading-none text-ink">SKILLS<br/>& CRAFT</h2>
+      <div class="flex-1 h-[2px] bg-ink ml-8 hidden md:block"></div>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-16">
+      {skillGroups.map(group => (
+        <div>
+          <h3 class="font-mono text-xs tracking-[0.3em] uppercase text-ink/40 mb-8">{group.category}</h3>
+          <div class="space-y-6">
+            {group.skills.map(skill => (
+              <div>
+                <div class="flex justify-between items-baseline mb-2">
+                  <span class="font-body text-lg text-ink">{skill.name}</span>
+                  <span class="font-mono text-xs text-ink/30">{skill.level}%</span>
+                </div>
+                <div class="h-1.5 bg-concrete overflow-hidden">
+                  <div
+                    class="h-full bg-ink transition-all duration-1000 ease-out"
+                    style={`width: 0%`}
+                    data-level={skill.level}
+                  ></div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<script>
+  // Animate skill bars on scroll
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const bars = entry.target.querySelectorAll('[data-level]');
+        bars.forEach((bar: HTMLElement) => {
+          bar.style.width = bar.dataset.level + '%';
+        });
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.3 });
+
+  const section = document.querySelector('#skills');
+  if (section) observer.observe(section);
+</script>

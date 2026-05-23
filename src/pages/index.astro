@@ -1,0 +1,28 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Nav from '../components/Nav.astro';
+import Hero from '../components/Hero.astro';
+import Projects from '../components/Projects.astro';
+import About from '../components/About.astro';
+import Skills from '../components/Skills.astro';
+import Contact from '../components/Contact.astro';
+import Footer from '../components/Footer.astro';
+
+const name = 'YOUR NAME';
+const role = 'DESIGNER & DEVELOPER';
+const tagline = 'BUILDING BOLD DIGITAL EXPERIENCES';
+---
+
+<BaseLayout title={`${name} — ${role}`} description="A bold, editorial-style portfolio built with Astro. Brutalist design meets modern web development.">
+  <Nav name={name} role={role} />
+  
+  <main>
+    <Hero name={name} role={role} tagline={tagline} />
+    <Projects />
+    <About name={name} />
+    <Skills />
+    <Contact />
+  </main>
+
+  <Footer name={name} />
+</BaseLayout>

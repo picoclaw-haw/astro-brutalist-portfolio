@@ -1,0 +1,93 @@
+---
+interface Project {
+  title: string;
+  description: string;
+  tags: string[];
+  link: string;
+  image: string;
+}
+
+const projects: Project[] = [
+  {
+    title: 'NEBULA — Design System',
+    description: 'A comprehensive design system built for scale. Components, tokens, and documentation that power cross-platform experiences.',
+    tags: ['React', 'TypeScript', 'Storybook', 'Figma'],
+    link: '#',
+    image: '🖥️',
+  },
+  {
+    title: 'KINETIC — Motion Platform',
+    description: 'Interactive animation tool for designers and developers. Create, export, and ship performant micro-interactions.',
+    tags: ['WebGL', 'Three.js', 'GSAP', 'Node.js'],
+    link: '#',
+    image: '⚡',
+  },
+  {
+    title: 'CIPHER — Analytics Dashboard',
+    description: 'Real-time data visualization platform. Beautiful charts, powerful filters, and collaborative workspaces.',
+    tags: ['Next.js', 'D3.js', 'PostgreSQL', 'Redis'],
+    link: '#',
+    image: '📊',
+  },
+  {
+    title: 'MONOLITH — CMS',
+    description: 'Headless content management for the modern web. API-first, markdown-native, and stupidly fast.',
+    tags: ['Astro', 'MDX', 'Edge', 'TypeScript'],
+    link: '#',
+    image: '🏗️',
+  },
+];
+---
+
+<section id="work" class="py-32 px-6 bg-paper relative">
+  <div class="max-w-7xl mx-auto">
+    <!-- Section header -->
+    <div class="mb-24 flex items-center gap-6">
+      <span class="font-mono text-xs tracking-[0.3em] uppercase text-rust">01.</span>
+      <h2 class="font-display text-[clamp(3rem,8vw,7rem)] leading-none text-ink">SELECTED<br/>WORK</h2>
+      <div class="flex-1 h-[2px] bg-ink ml-8 hidden md:block"></div>
+    </div>
+
+    <!-- Projects grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16">
+      {projects.map((project, i) => (
+        <a href={project.link} class="project-card group block relative">
+          <!-- Shadow / offset box -->
+          <div class="project-shadow absolute inset-0 bg-ink translate-x-3 translate-y-3 rounded-sm"></div>
+
+          <!-- Card -->
+          <div class="relative bg-paper border-2 border-ink p-8 md:p-10 rounded-sm z-10">
+            <!-- Icon / Image placeholder -->
+            <div class="text-5xl mb-8 bg-concrete w-20 h-20 flex items-center justify-center border border-ink/20">
+              {project.image}
+            </div>
+
+            <!-- Title -->
+            <h3 class="font-display text-3xl md:text-4xl text-ink mb-4 group-hover:text-rust transition-colors">
+              {project.title}
+            </h3>
+
+            <!-- Description -->
+            <p class="font-body text-lg text-charcoal/80 leading-relaxed mb-6">
+              {project.description}
+            </p>
+
+            <!-- Tags -->
+            <div class="flex flex-wrap gap-2">
+              {project.tags.map(tag => (
+                <span class="font-mono text-[10px] tracking-widest uppercase px-3 py-1.5 border border-ink/20 text-ink/60">
+                  {tag}
+                </span>
+              ))}
+            </div>
+
+            <!-- Arrow -->
+            <div class="absolute top-8 right-8 font-mono text-ink/30 group-hover:text-acid transition-colors text-xl">
+              ↗
+            </div>
+          </div>
+        </a>
+      ))}
+    </div>
+  </div>
+</section>

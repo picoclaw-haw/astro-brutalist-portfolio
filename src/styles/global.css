@@ -1,0 +1,120 @@
+/* Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Anton&family=Crimson+Pro:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap');
+
+/* Geist Mono from Vercel CDN */
+@import url('https://cdn.jsdelivr.net/npm/geist@1.3.0/dist/fonts/geist-mono/stylesheet.css');
+
+@import "tailwindcss";
+
+@theme {
+  --font-display: 'Anton', sans-serif;
+  --font-body: 'Crimson Pro', serif;
+  --font-mono: 'Geist Mono', monospace;
+
+  --color-ink: #1a1a1a;
+  --color-paper: #f7f6f2;
+  --color-acid: #d4ff00;
+  --color-rust: #ff4d00;
+  --color-concrete: #e8e5df;
+  --color-charcoal: #2d2d2d;
+  --color-smoke: #f0eeea;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    font-family: var(--font-body);
+    background-color: var(--color-paper);
+    color: var(--color-ink);
+    overflow-x: hidden;
+  }
+
+  ::selection {
+    background: var(--color-acid);
+    color: var(--color-ink);
+  }
+
+  ::-moz-selection {
+    background: var(--color-acid);
+    color: var(--color-ink);
+  }
+}
+
+@layer components {
+  .text-stroke {
+    -webkit-text-stroke: 2px var(--color-ink);
+    color: transparent;
+  }
+
+  .text-stroke-acid {
+    -webkit-text-stroke: 2px var(--color-acid);
+    color: transparent;
+  }
+
+  .grid-bg {
+    background-image:
+      linear-gradient(var(--color-concrete) 1px, transparent 1px),
+      linear-gradient(90deg, var(--color-concrete) 1px, transparent 1px);
+    background-size: 40px 40px;
+  }
+
+  .noise-overlay::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    opacity: 0.03;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+    background-size: 256px 256px;
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  .marquee-track {
+    animation: marquee 30s linear infinite;
+  }
+
+  @keyframes marquee {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+
+  .reveal-up {
+    animation: revealUp 0.8s cubic-bezier(0.22, 0.61, 0.36, 1) forwards;
+  }
+
+  @keyframes revealUp {
+    from {
+      opacity: 0;
+      transform: translateY(40px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .stagger-1 { animation-delay: 0.1s; }
+  .stagger-2 { animation-delay: 0.2s; }
+  .stagger-3 { animation-delay: 0.3s; }
+  .stagger-4 { animation-delay: 0.4s; }
+  .stagger-5 { animation-delay: 0.5s; }
+
+  .project-card {
+    transition: transform 0.3s cubic-bezier(0.22, 0.61, 0.36, 1);
+  }
+
+  .project-card:hover {
+    transform: translate(-4px, -4px);
+  }
+
+  .project-card:hover .project-shadow {
+    transform: translate(8px, 8px);
+  }
+
+  .project-shadow {
+    transition: transform 0.3s cubic-bezier(0.22, 0.61, 0.36, 1);
+  }
+}
